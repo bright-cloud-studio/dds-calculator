@@ -11,8 +11,14 @@ class FormHooks
     {
         // BOOTSTRAP - For triggering one off scripts when the need arises
         if($formData['formID'] == 'dds_step_1') {
-          echo "HOOK: FORM HOOKED HOOKFULLY";
-          die();
+          //echo "HOOK: FORM HOOKED HOOKFULLY";
+          //die();
+        }
+        
+        else if ($formData['formID'] == 'dds_step_2') {
+            echo "<pre>";
+            print_r($submittedData);
+            die();
         }
         
     }
