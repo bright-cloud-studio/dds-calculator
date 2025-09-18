@@ -4,12 +4,12 @@ namespace Bcs\Hooks;
 
 use Bcs\Model\CalculatorSubmission;
 
-class FormHooks
+class CalculatorHooks
 {
     protected static $arrUserOptions = array();
 
     // When a form is submitted
-    public function onFormSubmit($submittedData, $formData, $files, $labels, $form)
+    public function onCalculatorSubmission($submittedData, $formData, $files, $labels, $form)
     {
         $calculator_submission = new CalculatorSubmission();
         $calculator_submission->tstamp = time();
