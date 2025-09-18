@@ -27,3 +27,7 @@ $GLOBALS['TL_LANG']['tl_calculator_submission']['room_height']                = 
 $GLOBALS['TL_LANG']['tl_calculator_submission']['floor_material']             = array('Floor Material', 'The floor material selected during Step Two');
 $GLOBALS['TL_LANG']['tl_calculator_submission']['ceiling_material']           = array('Ceiling Material', 'The ceiling material selected during Step Two');
 $GLOBALS['TL_LANG']['tl_calculator_submission']['wall_material']              = array('Wall Material', 'The wall material selected during Step Two');
+
+$GLOBALS['TL_LANG']['tl_calculator_submission']['result_details']             = 'Calculated Results - Details';
+$GLOBALS['TL_LANG']['tl_calculator_submission']['result_rt60']                = array('RT60', 'The calculated RT60');
+$GLOBALS['TL_LANG']['tl_calculator_submission']['result_flag']                = array('Result FLAG', 'Flags set during calculation');
