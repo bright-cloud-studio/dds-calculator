@@ -16,5 +16,22 @@ class FormHooks
         }
         
     }
+
+    public function onCompileFormFields($arrFields, $formId, $objForm)
+    {
+        if ($objForm->id == 'dds_step_2') {
+            // loop through all of the form fields
+            foreach ($arrFields as $field)
+            {
+                // if we have a value in post that matches this field's name
+                if (\Input::post($field->name) != '') 
+                    $field->value = \Input::post($field->name);
+            }	
+        }
+        
+        // return our modified form fields
+        return $arrFields;
+    }
+    
   
 }
