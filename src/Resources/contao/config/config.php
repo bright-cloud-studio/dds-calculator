@@ -12,3 +12,4 @@ use Contao\System;
 
 /* Hooks */
 $GLOBALS['TL_HOOKS']['processFormData'][]        = array('Bcs\Hooks\FormHooks', 'onFormSubmit');
+$GLOBALS['TL_HOOKS']['compileFormFields'][]      = array('Bcs\Hooks\FormHooks', 'onCompileFormFields');
