@@ -32,8 +32,6 @@ class CalculatorHooks
         
         $calculator_submission->save();
         
-        
-        
     }
     
 }
