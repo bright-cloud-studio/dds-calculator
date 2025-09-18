@@ -78,7 +78,7 @@ $GLOBALS['TL_DCA']['tl_calculator_submission'] = array
     // Palettes
     'palettes' => array
     (
-        'default'                     => '{step_one_details}, first_name, last_name, company_name, project_name, zip_code, phone_number, email_address;{step_two_details}, room_length, room_width, room_height, floor_material, ceiling_material, wall_material;'
+        'default'                     => '{step_one_details}, date_created, first_name, last_name, company_name, project_name, zip_code, phone_number, email_address;{step_two_details}, room_length, room_width, room_height, floor_material, ceiling_material, wall_material;'
     ),
  
     // Fields
