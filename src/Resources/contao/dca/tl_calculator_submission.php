@@ -209,7 +209,7 @@ $GLOBALS['TL_DCA']['tl_calculator_submission'] = array
             'eval'                    => array('mandatory'=>true, 'tl_class'=>'clr'),
             'sql'                     => "varchar(255) NOT NULL default ''"
         ),
-        'floot_material' => array
+        'floor_material' => array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_email_record']['floor_material'],
             'inputType'               => 'select',
