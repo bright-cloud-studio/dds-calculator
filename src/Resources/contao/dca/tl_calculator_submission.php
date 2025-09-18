@@ -96,7 +96,6 @@ $GLOBALS['TL_DCA']['tl_calculator_submission'] = array
         (
             'sql'                   => "int(10) unsigned NOT NULL default '0'"
         ),
-
         'date_created' => array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_calculator_submission']['date_created'],
@@ -109,23 +108,8 @@ $GLOBALS['TL_DCA']['tl_calculator_submission'] = array
             'default'                => date('m/d/y g:i a')
         ),
 
-        'email_type' => array
-        (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_calculator_submission']['email_type'],
-            'inputType'               => 'select',
-            'default'                 => 'alert_week_remaining',
-            'filter'                  => true,
-            'search'                  => true,
-            'options'                 => array(
-                'alert_week_remaining' => 'Alert Email - Week Remaining',
-                'alert_final' => 'Alert Email - Final Day',
-                'pwf_no_meeting_date_entered' => 'Psych Work Form – No Meeting Date Entered',
-                'pwf_no_report_submitted' => 'Psych Work Form – No Report Submitted'
-            ),
-            'eval'                    => array('mandatory'=>true, 'tl_class'=>'w50'),
-            'sql'                     => "varchar(30) NOT NULL default ''"
-        ),
 
+        
         'first_name' => array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_calculator_submission']['first_name'],
