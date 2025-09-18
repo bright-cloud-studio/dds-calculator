@@ -16,9 +16,9 @@ $GLOBALS['TL_DCA']['tl_calculator_submission'] = array
         'dataContainer'               => DC_Table::class,
         'switchToEdit'                => false,
         'closed'                      => true,
-    		'notCopyable'                 => true,
-    		'notDeletable'                => true,
-    		'backendSearchIgnore'         => true,
+        'notCopyable'                 => true,
+        'notDeletable'                => true,
+        'backendSearchIgnore'         => true,
         'sql' => array
         (
             'keys' => array
@@ -44,9 +44,9 @@ $GLOBALS['TL_DCA']['tl_calculator_submission'] = array
         ),
         'label' => array
         (
-            'fields'                  => array('email_type', 'email_recipient'),
-            'format'                  => '%s - %s',
-            'label_callback'          => array('tl_email_record', 'generateLabel')
+            'fields'                  => array('first_name', 'last_name', 'email_address'),
+            'format'                  => '%s - %s - %s',
+            'label_callback'          => array('tl_calculator_submission', 'generateLabel')
         ),
         'global_operations' => array
         (
@@ -78,7 +78,7 @@ $GLOBALS['TL_DCA']['tl_calculator_submission'] = array
     // Palettes
     'palettes' => array
     (
-        'default'                     => '{email_record_legend}, date_created, email_type, email_recipient, email_subject, email_body;'
+        'default'                     => '{step_one_details}, first_name, last_name, company_name, project_name, zip_code, phone_number, email_address;{step_two_details}, room_length, room_width, room_height, floor_material, ceiling_material, wall_material;'
     ),
  
     // Fields
@@ -126,37 +126,141 @@ $GLOBALS['TL_DCA']['tl_calculator_submission'] = array
             'sql'                     => "varchar(30) NOT NULL default ''"
         ),
 
-        'email_recipient' => array
+        'first_name' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_calculator_submission']['email_recipient'],
-            'inputType'               => 'select',
-            'filter'                  => true,
-            'search'                  => false,
-            'foreignKey'              => 'tl_member.CONCAT(firstname," ",lastname)',
-            'flag'                    => DataContainer::SORT_INITIAL_LETTER_ASC,
-            'eval'                    => array('mandatory'=>true, 'tl_class'=>'w50', 'chosen'=>true),
-            'options_callback'	      => array('Bcs\Backend\EmailRecordBackend', 'getPsychologists'),
+            'label'                   => &$GLOBALS['TL_LANG']['tl_calculator_submission']['first_name'],
+            'inputType'               => 'text',
+            'default'                 => '',
+            'eval'                    => array('mandatory'=>true, 'tl_class'=>'clr'),
             'sql'                     => "varchar(255) NOT NULL default ''"
         ),
-
-        'email_subject' => array
+        'last_name' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_calculator_submission']['email_subject'],
+            'label'                   => &$GLOBALS['TL_LANG']['tl_calculator_submission']['last_name'],
+            'inputType'               => 'text',
+            'default'                 => '',
+            'eval'                    => array('mandatory'=>true, 'tl_class'=>'clr'),
+            'sql'                     => "varchar(255) NOT NULL default ''"
+        ),
+        'company_name' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_calculator_submission']['company_name'],
+            'inputType'               => 'text',
+            'default'                 => '',
+            'eval'                    => array('mandatory'=>true, 'tl_class'=>'clr'),
+            'sql'                     => "varchar(255) NOT NULL default ''"
+        ),
+        'project_name' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_calculator_submission']['project_name'],
+            'inputType'               => 'text',
+            'default'                 => '',
+            'eval'                    => array('mandatory'=>true, 'tl_class'=>'clr'),
+            'sql'                     => "varchar(255) NOT NULL default ''"
+        ),
+        'zip_code' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_calculator_submission']['zip_code'],
+            'inputType'               => 'text',
+            'default'                 => '',
+            'eval'                    => array('mandatory'=>true, 'tl_class'=>'clr'),
+            'sql'                     => "varchar(255) NOT NULL default ''"
+        ),
+        'phone_number' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_calculator_submission']['phone_number'],
+            'inputType'               => 'text',
+            'default'                 => '',
+            'eval'                    => array('mandatory'=>true, 'tl_class'=>'clr'),
+            'sql'                     => "varchar(255) NOT NULL default ''"
+        ),
+        'email_address' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_calculator_submission']['email_address'],
             'inputType'               => 'text',
             'default'                 => '',
             'eval'                    => array('mandatory'=>true, 'tl_class'=>'clr'),
             'sql'                     => "varchar(255) NOT NULL default ''"
         ),
 
-        'email_body' => array
+
+
+        'room_length' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_calculator_submission']['email_body'],
+            'label'                   => &$GLOBALS['TL_LANG']['tl_calculator_submission']['room_length'],
             'inputType'               => 'text',
             'default'                 => '',
-            'eval'                    => array('mandatory'=>true, 'tl_class'=>'clr', 'rte'=>'tinyMCE'),
-            'sql'                     => "text NOT NULL default ''"
-        )
+            'eval'                    => array('mandatory'=>true, 'tl_class'=>'clr'),
+            'sql'                     => "varchar(255) NOT NULL default ''"
+        ),
+        'room_width' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_calculator_submission']['room_width'],
+            'inputType'               => 'text',
+            'default'                 => '',
+            'eval'                    => array('mandatory'=>true, 'tl_class'=>'clr'),
+            'sql'                     => "varchar(255) NOT NULL default ''"
+        ),
+        'room_height' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_calculator_submission']['room_height'],
+            'inputType'               => 'text',
+            'default'                 => '',
+            'eval'                    => array('mandatory'=>true, 'tl_class'=>'clr'),
+            'sql'                     => "varchar(255) NOT NULL default ''"
+        ),
+        'floot_material' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_email_record']['floor_material'],
+            'inputType'               => 'select',
+            'default'                 => 'alert_week_remaining',
+            'filter'                  => true,
+            'search'                  => true,
+            'options'                 => array(
+                'concrete' => 'Concrete',
+                'wood' => 'Wood',
+                'thin_carpet' => 'Thin Carpet',
+                'thick_carpet' => 'Thick Carpet',
+                'tile' => 'Tile',
+                'rubber_sports_flooring' => 'Rubber Sports Flooring'
+            ),
+            'eval'                    => array('mandatory'=>true, 'tl_class'=>'w50'),
+            'sql'                     => "varchar(30) NOT NULL default ''"
+        ),
+        'ceiling_material' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_email_record']['ceiling_material'],
+            'inputType'               => 'select',
+            'default'                 => 'alert_week_remaining',
+            'filter'                  => true,
+            'search'                  => true,
+            'options'                 => array(
+                'gypsum_board' => 'Gypsum Board',
+                'metal_deck' => 'Metal Deck',
+                'wood_ceiling' => 'Wood Ceiling',
+                'contractor_grade_act' => 'Contractor Grade ACT'
+            ),
+            'eval'                    => array('mandatory'=>true, 'tl_class'=>'w50'),
+            'sql'                     => "varchar(30) NOT NULL default ''"
+        ),
+        'wall_material' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_email_record']['wall_material'],
+            'inputType'               => 'select',
+            'default'                 => 'alert_week_remaining',
+            'filter'                  => true,
+            'search'                  => true,
+            'options'                 => array(
+                'painted_drywall' => 'Painted Drywall',
+                'cinder_block' => 'Cinder Block',
+                'brick' => 'Brick',
+                'glass' => 'Glass'
+            ),
+            'eval'                    => array('mandatory'=>true, 'tl_class'=>'w50'),
+            'sql'                     => "varchar(30) NOT NULL default ''"
+        ),
 
+        
         
     )
 );
