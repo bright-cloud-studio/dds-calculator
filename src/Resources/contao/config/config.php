@@ -12,3 +12,10 @@ use Contao\System;
 
 /* Hooks */
 $GLOBALS['TL_HOOKS']['processFormData'][]        = array('Bcs\Hooks\FormHooks', 'onFormSubmit');
+
+/* Add to Navigation */
+$GLOBALS['TL_LANG']['MOD']['dds_calculator'][0] = "DDS Calculator";
+$GLOBALS['BE_MOD']['dds_calculator']['calculator_submission'] = array( 'tables' => array('tl_calculator_submission') );
+
+/* Models */
+$GLOBALS['TL_MODELS']['tl_calculator_submission']         = 'Bcs\Model\CalculatorSubmission';
