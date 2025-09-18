@@ -78,7 +78,7 @@ $GLOBALS['TL_DCA']['tl_calculator_submission'] = array
     // Palettes
     'palettes' => array
     (
-        'default'                     => '{step_one_details}, date_created, first_name, last_name, company_name, project_name, zip_code, phone_number, email_address;{step_two_details}, room_length, room_width, room_height, floor_material, ceiling_material, wall_material;'
+        'default'                     => '{step_one_details}, date_created, first_name, last_name, company_name, project_name, zip_code, phone_number, email_address;{step_two_details}, room_length, room_width, room_height, floor_material, ceiling_material, wall_material;{result_details}, result_rt60, result_flag;'
     ),
  
     // Fields
@@ -243,6 +243,30 @@ $GLOBALS['TL_DCA']['tl_calculator_submission'] = array
             'eval'                    => array('mandatory'=>true, 'tl_class'=>'w50'),
             'sql'                     => "varchar(30) NOT NULL default ''"
         ),
+
+
+
+        'result_rt60' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_calculator_submission']['result_rt60'],
+            'inputType'               => 'text',
+            'default'                 => '',
+            'eval'                    => array('mandatory'=>true, 'tl_class'=>'clr'),
+            'sql'                     => "varchar(255) NOT NULL default ''"
+        ),
+        'result_flag' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_calculator_submission']['result_flag'],
+            'inputType'               => 'radio',
+            'options'                 => array('1' => 'RT60 Greater than 1.5', '2' => 'RT60 less than 0.6', '3' => 'RT60 within reasonable range'),
+            'eval'                    => array('tl_class' => 'w50'),
+            'sql'                     => "varchar(5) NOT NULL default ''"
+        ),
+
+
+
+
+        
 
         
         
