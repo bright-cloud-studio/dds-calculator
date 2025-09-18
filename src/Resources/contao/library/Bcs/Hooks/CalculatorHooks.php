@@ -30,8 +30,93 @@ class CalculatorHooks
         $calculator_submission->ceiling_material = $submittedData['ceiling_material'];
         $calculator_submission->wall_material = $submittedData['wall_material'];
         
+        
+        // Calculate and save results
+        $length = $submittedData['room_length'];
+        $width = $submittedData['room_width'];
+        $height = $submittedData['room_height'];
+        $floor_alpha = $this->getFloorAlpha($submittedData['floor_material']);
+        $ceiling_alpha = $this->getCeilingAlpha($submittedData['ceiling_material']);
+        $wall_alpha = $this->getWallAlpha($submittedData['wall_material']);
+        
+        $volume = $length * $width * $height;
+        $floor_area = $length * $width;
+        $ceiling_area = $floor_area;
+        $wall_area = 2 * ($length * $height + $width * $height);
+        
+        $a = ($floor_area * $floor_alpha) + ($ceiling_area * $ceiling_alpha) + ($wall_area * $wall_alpha);
+        $rt60 = 0.049 * $volume / $a;
+        $rt60_fixed = number_format($rt60,2);
+
+        $calculator_submission->result_rt60 = $rt60_fixed;
+        
+        if($rt60_fixed > 1.5) {
+            $calculator_submission->result_flag = 1;
+        } else if($rt60_fixed < 0.6) {
+            $calculator_submission->result_flag = 2;
+        } else {
+            $calcilator_submission->result_flag = 3;
+        }
+
         $calculator_submission->save();
         
+    }
+    
+    function getFloorAlpha($label) {
+        switch ($label) {
+            case 'concrete':
+                return 0.03;
+                break;
+            case 'wood':
+                return 0.10;
+                break;
+            case 'thin_carpet':
+                return 0.10;
+                break;
+            case 'thick_carpet':
+                return 0.25;
+                break;
+            case 'tile':
+                return 0.01;
+                break;
+            case 'rubber_sports_flooring':
+                return 0.10;
+                break;
+        }
+    }
+    
+    function getCeilingAlpha($label) {
+        switch ($label) {
+            case 'gypsum_board':
+                return 0.05;
+                break;
+            case 'metal_deck':
+                return 0.04;
+                break;
+            case 'wood_ceiling':
+                return 0.10;
+                break;
+            case 'contractor_grade_act':
+                return 0.35;
+                break;
+        }
+    }
+    
+    function getWallAlpha($label) {
+        switch ($label) {
+            case 'painted_drywall':
+                return 0.05;
+                break;
+            case 'cinder_block':
+                return 0.05;
+                break;
+            case 'brick':
+                return 0.03;
+                break;
+            case 'glass':
+                return 0.05;
+                break;
+        }
     }
     
 }
