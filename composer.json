@@ -1,0 +1,41 @@
+{
+    "name":"bright-cloud-studio/dds-calculator",
+    "description":"Adds a custom calculator to Contao for a specific client",
+    "keywords": ["contao", "calculator", "dds", "bright", "cloud", "studio"],
+    "type": "contao-bundle",
+    "homepage": "http://brightcloudstudio.com/",
+    "license": "LGPL-3.0+",
+    "authors":[
+        {
+            "name": "Bright Cloud Studio",
+            "homepage": "https://brightcloudstudio.com",
+            "email": "mark@brightcloudstudio.com",
+            "role": "Developer"
+        }
+    ],
+    "support":{
+        "issues": "https://github.com/bright-cloud-studio/dds-calculator/issues",
+        "source": "https://github.com/bright-cloud-studio/dds-calculator"
+    },
+    "require":{
+        "php": "^7.3 || ^8.0",
+        "contao/core-bundle": "^4.9 || ^5.3"
+    },
+    "extra":{
+        "contao-manager-plugin": "Bcs\\DDSCalcBundle\\ContaoManager\\Plugin"
+    },
+    "autoload": {
+        "psr-4": {
+            "Bcs\\DDSCalcBundle\\": "src"
+        },
+        "classmap": [
+            "src/Resources/contao"
+        ],
+        "exclude-from-classmap": [
+            "src/Resources/contao/config/",
+            "src/Resources/contao/dca/",
+            "src/Resources/contao/languages/",
+            "src/Resources/contao/templates/"
+        ]
+    }
+}
