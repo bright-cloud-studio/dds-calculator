@@ -15,7 +15,7 @@ class CalculatorHooks
 
         // Create a new Calculator Submission record
         $calculator_submission = new CalculatorSubmission();
-        $calculator_submission->uuid = generateUUID();
+        $calculator_submission->uuid = $this->generateUUID();
         $calculator_submission->tstamp = time();
         $calculator_submission->date_created = time();
         // Step One fields
