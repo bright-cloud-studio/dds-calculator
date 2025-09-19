@@ -60,7 +60,36 @@ class CalculatorHooks
         }
         // Save our Calculator Submission record
         $calculator_submission->save();
+
+        // Send data to Zapier
+        $data_to_send = array(
+            "length" => $length,
+            "width" => $width,
+            "height" => $height,
+            "floorAlpha" => $floor_alpha,
+            "ceilingAlpha" => $ceiling_alpha,
+            "wallAlpha" => $wall_alpha,
+            "floorMaterial" => $submittedData['floor_material'],
+            "ceilingMaterial" => $submittedData['ceiling_material'],
+            "wallMaterial" => $submittedData['wall_material'],
+            "rt60" => $rt60_fixed,
+        );
+        $this->sendToZapier($data_to_send);
         
+        
+    }
+
+    function sendToZapier($data_to_send) {
+        $zapier_webhook_url = "https://hooks.zapier.com/hooks/catch/18365250/uy0io7a/"; // Replace with your actual URL
+
+        $ch = curl_init($zapier_webhook_url);
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data_to_send));
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+        curl_setopt($ch, CURLOPT_HEADER, 0);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        $response = curl_exec($ch);
+        curl_close($ch);
     }
 
     // Convert our form value to the number we need for calculation
