@@ -64,6 +64,12 @@ class CalculatorHooks
 
         // Send data to Zapier
         $data_to_send = array(
+            "name" => $submittedData['first_name'] . " " . $submittedData['last_name'],
+            "company" => $submittedData['company_name'],
+            "project" => $submittedData['project_name'],
+            "zip" => $submittedData['zip_code'],
+            "phone" => $submittedData['phone_number'],
+            "email" => $submittedData['email_address'],
             "length" => $length,
             "width" => $width,
             "height" => $height,
@@ -76,7 +82,13 @@ class CalculatorHooks
             "rt60" => $rt60_fixed,
         );
         $this->sendToZapier($data_to_send);
-
+        
+        $myfile = fopen($_SERVER['DOCUMENT_ROOT'] . '/../files/logs/ddc_calc_'.strtolower(date('m_d_y_H:m:s')).".txt", "w") or die("Unable to open file!");
+        
+        foreach($data_to_send as $key=>$value) {
+            fwrite($myfile, "KEY: " . $key . " - VALUE: " . $value . "\r\n");
+        }
+        
     }
 
     function sendToZapier($data_to_send) {
