@@ -59,7 +59,7 @@ class CalculatorHooks
             $calcilator_submission->result_flag = 3;
         }
         // Save our Calculator Submission record
-        $calculator_submission->save();
+        //$calculator_submission->save();
 
         // Send data to Zapier
         $data_to_send = array(
@@ -74,7 +74,7 @@ class CalculatorHooks
             "wallMaterial" => $submittedData['wall_material'],
             "rt60" => $rt60_fixed,
         );
-        $this->sendToZapier($data_to_send);
+        //$this->sendToZapier($data_to_send);
 
         $myfile = fopen("/logs/calc_submission_".date('m-d-Y_hia').".txt", "w") or die("Unable to open file!");
         fwrite($myfile, print_r($data_to_send) . "\r\n");
