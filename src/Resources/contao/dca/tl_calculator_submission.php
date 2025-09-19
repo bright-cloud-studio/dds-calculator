@@ -19,6 +19,10 @@ $GLOBALS['TL_DCA']['tl_calculator_submission'] = array
         'notCopyable'                 => true,
         'notDeletable'                => true,
         'backendSearchIgnore'         => true,
+        'oncreate_callback' => array
+		(
+			array('tl_calculator_submission', 'generateUUID')
+		),
         'sql' => array
         (
             'keys' => array
@@ -291,16 +295,18 @@ class tl_calculator_submission extends Backend
         return $label;
     }
 
-    public function generate_uuid_v4() {
+    public function generateUUID($table, $insert_id, $record, $dc) {
         // Generate 16 bytes (128 bits) of random data
         $data = random_bytes(16);
         
         // Set version to 0100 (4) and variant to 10xx (RFC 4122)
         $data[6] = chr(ord($data[6]) & 0x0f | 0x40); // set version to 0100
         $data[8] = chr(ord($data[8]) & 0x3f | 0x80); // set variant to 10xx
-        
+
+        $dc->activeRecordd->uuid = vsprintf('%s%s-%s-%s-%s-%s%s%s', str_split(bin2hex($data), 4));
+        $dc->activeRecord->save();
         // Format the UUID string
-        return vsprintf('%s%s-%s-%s-%s-%s%s%s', str_split(bin2hex($data), 4));
+        return;
     }
     
 }
