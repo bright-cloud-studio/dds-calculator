@@ -96,8 +96,7 @@ $GLOBALS['TL_DCA']['tl_calculator_submission'] = array
         (
             'inputType'              => 'text',
             'eval'                   => array('tl_class'=>'w50'),
-            'default'                => array('tl_calculator_submission', 'generate_uuid_v4'),
-            'sql'                    => "int(20) unsigned NULL"
+            'sql'                    => "TEXT NULL"
         ),
         'tstamp' => array
         (
