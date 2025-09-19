@@ -15,6 +15,7 @@ class CalculatorHooks
 
         // Create a new Calculator Submission record
         $calculator_submission = new CalculatorSubmission();
+        $calculator_submission->uuid = generateUUID();
         $calculator_submission->tstamp = time();
         $calculator_submission->date_created = time();
         // Step One fields
@@ -102,6 +103,19 @@ class CalculatorHooks
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         $response = curl_exec($ch);
         curl_close($ch);
+    }
+
+    function generateUUID() {
+        // Generate 16 bytes (128 bits) of random data
+        $data = random_bytes(16);
+        
+        // Set version to 0100 (4) and variant to 10xx (RFC 4122)
+        $data[6] = chr(ord($data[6]) & 0x0f | 0x40); // set version to 0100
+        $data[8] = chr(ord($data[8]) & 0x3f | 0x80); // set variant to 10xx
+
+        $uuid = vsprintf('%s%s-%s-%s-%s-%s%s%s', str_split(bin2hex($data), 4));
+        
+        return $uuid;
     }
 
     // Convert our form value to the number we need for calculation
