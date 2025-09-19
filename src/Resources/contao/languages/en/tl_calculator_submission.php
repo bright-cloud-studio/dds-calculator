@@ -10,6 +10,9 @@ $GLOBALS['TL_LANG']['tl_calculator_submission']['toggle']                     = 
 $GLOBALS['TL_LANG']['tl_calculator_submission']['publish_legend']             = 'Publish';
 $GLOBALS['TL_LANG']['tl_calculator_submission']['published']                  = array('Published', 'Show this record on the front end.');
 
+$GLOBALS['TL_LANG']['tl_calculator_submission']['uuid_details']               = 'Universal Unique Identification - Details';
+$GLOBALS['TL_LANG']['tl_calculator_submission']['uuid']                       = array('UUID', 'Generated private UUID, generated at creation time for this record');
+
 $GLOBALS['TL_LANG']['tl_calculator_submission']['step_one_details']           = 'Step One - Details';
 $GLOBALS['TL_LANG']['tl_calculator_submission']['date_created']               = array('Date Created', 'The date this record was created');
 $GLOBALS['TL_LANG']['tl_calculator_submission']['first_name']                 = array('First Name', 'The first name of the person who submitted this calculation');
