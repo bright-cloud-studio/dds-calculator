@@ -88,6 +88,11 @@ $GLOBALS['TL_DCA']['tl_calculator_submission'] = array
         (
             'sql'                   => "int(10) unsigned NOT NULL auto_increment"
         ),
+        'uuid' => array
+        (
+            'default'                 => $this->generate_uuid_v4(),
+            'sql'                   => "int(20) unsigned NULL"
+        ),
         'tstamp' => array
         (
             'sql'                   => "int(10) unsigned NOT NULL default '0'"
@@ -283,4 +288,17 @@ class tl_calculator_submission extends Backend
         $label = date('m/d/y g:i a', $row['date_created']) . " - " . $label;
         return $label;
     }
+
+    public function generate_uuid_v4() {
+        // Generate 16 bytes (128 bits) of random data
+        $data = random_bytes(16);
+        
+        // Set version to 0100 (4) and variant to 10xx (RFC 4122)
+        $data[6] = chr(ord($data[6]) & 0x0f | 0x40); // set version to 0100
+        $data[8] = chr(ord($data[8]) & 0x3f | 0x80); // set variant to 10xx
+        
+        // Format the UUID string
+        return vsprintf('%s%s-%s-%s-%s-%s%s%s', str_split(bin2hex($data), 4));
+    }
+    
 }
