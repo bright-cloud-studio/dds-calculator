@@ -3,6 +3,7 @@
 namespace Bcs\Hooks;
 
 use Bcs\Model\CalculatorSubmission;
+use Contao\Config;
 
 class CalculatorHooks
 {
@@ -82,7 +83,7 @@ class CalculatorHooks
     }
 
     function sendToZapier($data_to_send) {
-        $zapier_webhook_url = ""; // Replace with your actual URL
+        $zapier_webhook_url = Config::get('zapier_webhook'); // Replace with your actual URL
 
         $ch = curl_init($zapier_webhook_url);
         curl_setopt($ch, CURLOPT_POST, 1);
