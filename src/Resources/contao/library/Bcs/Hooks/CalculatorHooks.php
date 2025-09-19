@@ -77,7 +77,7 @@ class CalculatorHooks
         );
         //$this->sendToZapier($data_to_send);
 
-        $myfile = fopen("/logs/calc_submission_".date('m-d-Y_hia').".txt", "w") or die("Unable to open file!");
+        $myfile = fopen($_SERVER['DOCUMENT_ROOT'] . '/../files/logs/ddc_calc_'.strtolower(date('m_d_y_H:m:s')).".txt", "w") or die("Unable to open file!");
         fwrite($myfile, print_r($data_to_send) . "\r\n");
         
     }
