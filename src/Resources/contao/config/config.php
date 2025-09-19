@@ -19,3 +19,6 @@ $GLOBALS['BE_MOD']['dds_calculator']['calculator_submission'] = array( 'tables' 
 
 /* Models */
 $GLOBALS['TL_MODELS']['tl_calculator_submission']         = 'Bcs\Model\CalculatorSubmission';
+
+/* Front end modules */
+$GLOBALS['FE_MOD']['dds_acoustics']['mod_display_calculator_submission'] = 'Bcs\Module\ModDisplayCalculatorSubmission';
