@@ -50,9 +50,12 @@ class ModDisplayCalculatorSubmission extends \Contao\Module
     {
 
         if($_SESSION['calculator_submission']) {
-
+            $uuid = $_SESSION['calculator_submission'];
+            $calculator_submission = CalculatorSubmission::findOneBy(['uuid = ?'], [$uuid]);
+            if($calculator_submission) {
+                $this->Template->submission_details = $calculator_submission;
+            }
         }
-        
         
     }
 
