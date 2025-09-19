@@ -2,7 +2,7 @@
 
 namespace Bcs\Module;
 
-use Bcs\Model\TestResult;
+use Bcs\Model\CalculatorSubmission;
 
 use Contao\ArrayUtil;
 use Contao\Controller;
@@ -48,6 +48,10 @@ class ModDisplayCalculatorSubmission extends \Contao\Module
 
     protected function compile()
     {
+
+        if($_SESSION['calculator_submission']) {
+
+        }
         
         
     }
