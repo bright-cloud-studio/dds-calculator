@@ -53,7 +53,20 @@ class ModDisplayCalculatorSubmission extends \Contao\Module
             $uuid = $_SESSION['calculator_submission'];
             $calculator_submission = CalculatorSubmission::findOneBy(['uuid = ?'], [$uuid]);
             if($calculator_submission) {
-                $this->Template->submission_details = $calculator_submission;
+                
+                $submission_details = [];
+                
+                $submission_details['room_length'] = $calculator_submission->room_length;
+                $submission_details['room_width'] = $calculator_submission->room_width;
+                $submission_details['room_height'] = $calculator_submission->room_height;
+                $submission_details['floor_material'] = $calculator_submission->floor_material;
+                $submission_details['ceiling_material'] = $calculator_submission->ceiling_material;
+                $submission_details['wall_material'] = $calculator_submission->wall_material;
+                
+                $submission_details['rt60'] = $calculator_submission->result_rt60;
+                $submission_details['flag'] = $calculator_submission->result_flag;
+                
+                $this->Template->submission_details = $submission_details;
             }
         }
         
