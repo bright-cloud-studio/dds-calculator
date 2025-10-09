@@ -1,3 +1,22 @@
 <div class="mod_display_calculator_submission size100 marbot30">
-  <p>Calculator Submission UUID: <?= $_SESSION['calculator_submission'] ?></p>
+  
+  <?php if($this->submission_details) { ?>
+
+    <div class="calculation_results size100 nopad">
+      Estimated RT60: <?= $this->submission_details['rt60'] ?> seconds<br>
+      
+      <?php if($this->submission_details['flag'] == 1) { ?>
+        <p>This space likely needs acoustic treatment for clarity and comfort.</p>
+      <?php } else if($this->submission_details['flag'] == 2) { ?>
+        <p>This is a very absorptive space — ideal for studios or control rooms.</p>
+      <?php } else if($this->submission_details['flag'] == 1) { ?>
+        <p>This is within a reasonable range for most environments.</p>
+      <?php } ?>
+      
+      <p><em>Disclaimer: This RT60 calculation is a general estimate. A member of the DDS Acoustical Specialties team will reach out to further discuss your project needs and provide professional recommendations.</em></p>
+    </div>
+    
+  
+  <?php } ?>
+  
 </div>
