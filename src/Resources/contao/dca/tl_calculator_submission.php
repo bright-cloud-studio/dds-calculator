@@ -207,12 +207,12 @@ $GLOBALS['TL_DCA']['tl_calculator_submission'] = array
             'filter'                  => true,
             'search'                  => true,
             'options'                 => array(
-                'concrete' => 'Concrete',
-                'wood' => 'Wood',
-                'thin_carpet' => 'Thin Carpet',
-                'thick_carpet' => 'Thick Carpet',
-                'tile' => 'Tile',
-                'rubber_sports_flooring' => 'Rubber Sports Flooring'
+                '0.03' => 'Concrete',
+                '0.10' => 'Wood',
+                '0.10' => 'Thin Carpet',
+                '0.25' => 'Thick Carpet',
+                '0.01' => 'Tile',
+                '0.10' => 'Rubber Sports Flooring'
             ),
             'eval'                    => array('mandatory'=>true, 'tl_class'=>'w50'),
             'sql'                     => "varchar(30) NOT NULL default ''"
@@ -225,10 +225,10 @@ $GLOBALS['TL_DCA']['tl_calculator_submission'] = array
             'filter'                  => true,
             'search'                  => true,
             'options'                 => array(
-                'gypsum_board' => 'Gypsum Board',
-                'metal_deck' => 'Metal Deck',
-                'wood_ceiling' => 'Wood Ceiling',
-                'contractor_grade_act' => 'Contractor Grade ACT'
+                '0.05' => 'Gypsum Board',
+                '0.04' => 'Metal Deck',
+                '0.10' => 'Wood Ceiling',
+                '0.35' => 'Contractor Grade ACT'
             ),
             'eval'                    => array('mandatory'=>true, 'tl_class'=>'w50'),
             'sql'                     => "varchar(30) NOT NULL default ''"
@@ -241,10 +241,10 @@ $GLOBALS['TL_DCA']['tl_calculator_submission'] = array
             'filter'                  => true,
             'search'                  => true,
             'options'                 => array(
-                'painted_drywall' => 'Painted Drywall',
-                'cinder_block' => 'Cinder Block',
-                'brick' => 'Brick',
-                'glass' => 'Glass'
+                '0.05' => 'Painted Drywall',
+                '0.05' => 'Cinder Block',
+                '0.03' => 'Brick',
+                '0.05' => 'Glass'
             ),
             'eval'                    => array('mandatory'=>true, 'tl_class'=>'w50'),
             'sql'                     => "varchar(30) NOT NULL default ''"
