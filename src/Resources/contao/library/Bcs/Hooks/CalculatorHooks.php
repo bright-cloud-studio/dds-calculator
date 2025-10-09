@@ -39,9 +39,10 @@ class CalculatorHooks
             $length = $submittedData['room_length'];
             $width = $submittedData['room_width'];
             $height = $submittedData['room_height'];
-            $floor_alpha = $this->getFloorAlpha($submittedData['floor_material']);
-            $ceiling_alpha = $this->getCeilingAlpha($submittedData['ceiling_material']);
-            $wall_alpha = $this->getWallAlpha($submittedData['wall_material']);
+            
+            $floor_alpha = $submittedData['floor_material'];
+            $ceiling_alpha = $submittedData['ceiling_material'];
+            $wall_alpha = $submittedData['wall_material'];
             
             // Calculate RT60 here
             $volume = $length * $width * $height;
