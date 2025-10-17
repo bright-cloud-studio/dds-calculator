@@ -39,7 +39,6 @@ class CalculatorHooks
             $length = $submittedData['room_length'];
             $width = $submittedData['room_width'];
             $height = $submittedData['room_height'];
-            
             $floor_alpha = $submittedData['floor_material'];
             $ceiling_alpha = $submittedData['ceiling_material'];
             $wall_alpha = $submittedData['wall_material'];
