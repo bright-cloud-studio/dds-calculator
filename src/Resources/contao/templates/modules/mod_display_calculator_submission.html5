@@ -4,7 +4,7 @@
 
 
     <div class="calculation_results size100 nopad">
-      Estimated RT60: <?= $this->submission_details->result_rt60 ?> seconds<br>
+      Estimated RT60: <span class="rt60"><?= $this->submission_details->result_rt60 ?> seconds</span><br>
 
       <?php if($this->submission_details->result_flag == 1) { ?>
         <?= \Contao\Config::get('rt60_flag_1'); ?>
